@@ -13,6 +13,8 @@ import { ThemeProvider } from '@mui/material/styles';
 function MainPage() {
     const matches = useMediaQuery('(min-width:900px)'); //반응형 메뉴 (미디어 가로크기 GET)
 
+    const grid = ((matches) ? <Grid container><Grid xs={2}><Typography color={"red"} style={{textAlign: "center"}}>긴급공지</Typography></Grid><Grid xs={10}><Typography sx={{ml: 2}}>[긴급공지 이름]</Typography></Grid></Grid> : <Grid container><Grid xs={3}><Typography color={"red"} style={{textAlign: "center"}}>긴급공지</Typography></Grid><Grid xs={9}><Typography sx={{ml: 2}}>[긴급공지 이름]</Typography></Grid></Grid>);
+
     return (
         <ThemeProvider theme={<Theme/>}>
             <Container align={"center"}>
@@ -22,10 +24,7 @@ function MainPage() {
                     width={"100%"}
                 /><br/><br/>
                 <Paper style={{textAlign: "left", padding: "1%", cursor: "pointer"}}>
-                    <Grid container>
-                        <Grid xs={2}><Typography color={"red"} style={{textAlign: "center"}}>긴급공지</Typography></Grid>
-                        <Grid xs={10}><Typography sx={{ml: 2}}>[긴급공지 이름]</Typography></Grid>
-                    </Grid>
+                    {grid}
                 </Paper>
                 <br/><br/>
                 <span style={{fontSize: "1.5rem", fontWeight: "bold"}}>장서교통공사 웹사이트에{(!matches) ? <br/> : ""} 오신 것을 환영합니다!</span><br/><br/>
