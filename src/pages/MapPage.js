@@ -16,7 +16,7 @@ function MapPage() {
         );
     } else {
         return (
-            <Container >
+            <Container>
                 <Header label={"노선도"}/>
                 <div style={{display: "flex", justifyContent: "center"}}>
                     <img

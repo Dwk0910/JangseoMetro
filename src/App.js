@@ -9,7 +9,7 @@ import {
     Grid,
     List, ListItem, ListItemButton, ListItemText,
     BottomNavigation, BottomNavigationAction,
-    Paper
+    Paper,
 } from '@mui/material';
 
 import { Home, Map, Campaign } from '@mui/icons-material';
@@ -48,7 +48,7 @@ function App() {
         icon: Map
     },{
         id: 3,
-        title: '공지',
+        title: '알림마당',
         icon: Campaign
     }];
 
@@ -85,31 +85,29 @@ function App() {
     );
 
     const small = (
-        <Container maxWidth={"xl"} fixed>
-            <ThemeProvider theme={theme}>
-                <Toolbar style={{justifyContent: "center"}}>
-                    <img src={"https://cdn.discordapp.com/attachments/753612337461854302/1194180668683468801/jangseometro_full.png?ex=65af6a6a&is=659cf56a&hm=74006274ebf71367d89ce295c573af177e332eb6d27adc44c462f7c429f6c6b1&"} alt={"logo"} width={"300px"} style={{cursor: "pointer"}} onClick={() => {
-                        window.location.href = '.';
-                    }}/>
-                </Toolbar>
-                <Container>
-                    <GetPage id={page}/>
-                    <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}>
-                        <BottomNavigation
-                            showLabels
-                            value={Number(page) - 1}
-                            onChange={(event, newValue) => {
-                                window.location.href = (newValue + 1 !== 1) ? `?pid=${newValue + 1}` : ".";
-                            }}
-                        >
-                            {menuItems.map((item) => (
-                                <BottomNavigationAction key={item.id} icon={<item.icon/>} label={item.title}/>
-                            ))}
-                        </BottomNavigation>
-                    </Paper>
-                </Container>
-            </ThemeProvider>
-        </Container>
+        <ThemeProvider theme={theme}>
+            <Toolbar style={{justifyContent: "center"}}>
+                <img src={"https://cdn.discordapp.com/attachments/753612337461854302/1194180668683468801/jangseometro_full.png?ex=65af6a6a&is=659cf56a&hm=74006274ebf71367d89ce295c573af177e332eb6d27adc44c462f7c429f6c6b1&"} alt={"logo"} width={"300px"} style={{cursor: "pointer"}} onClick={() => {
+                    window.location.href = '.';
+                }}/>
+            </Toolbar>
+            <Container>
+                <GetPage id={page}/>
+                <Paper sx={{ position: 'fixed', bottom: 0, left: 0, right: 0 }}>
+                    <BottomNavigation
+                        showLabels
+                        value={Number(page) - 1}
+                        onChange={(event, newValue) => {
+                            window.location.href = (newValue + 1 !== 1) ? `?pid=${newValue + 1}` : ".";
+                        }}
+                    >
+                        {menuItems.map((item) => (
+                            <BottomNavigationAction key={item.id} icon={<item.icon/>} label={item.title}/>
+                        ))}
+                    </BottomNavigation>
+                </Paper>
+            </Container>
+        </ThemeProvider>
     );
 
     return ((matches) ? full : small);
